@@ -7,6 +7,11 @@ typedef struct{
     int tipo;
 } JogadorIA;
 
-void jogarIA(JogadorIA *ia, Tabuleiro *t);
 int R1(Tabuleiro *t, int alvo, int tipoIA);
+int R2(Tabuleiro *t, int tipoIA);
+int R3(Tabuleiro *t, int tipoIA);
+int R4(Tabuleiro *t, int tipoIA);
+int R5(Tabuleiro *t, int tipoIA);
+int R6(Tabuleiro *t, int tipoIA);
+int jogarIA(Tabuleiro *t, int tipoIA);
 #endif
