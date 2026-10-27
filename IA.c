@@ -135,6 +135,9 @@ int jogarIA(Tabuleiro *t, int tipoIA){
     if(R2(t, tipoIA)){
         return 1;
     }
+    if(R1(t, 4, tipoIA)){
+        return 1;
+    }
     if(R3(t, tipoIA)){
         return 1;
     }
