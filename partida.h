@@ -1,6 +1,5 @@
 #ifndef PARTIDA_H
 #define PARTIDA_H
 
-void iniciarPartida(void);
-
+void iniciarPartida(int modoJogo);
 #endif

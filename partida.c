@@ -2,8 +2,9 @@
 #include "partida.h"
 #include "tabuleiro.h"
 #include "jogadorTeclado.h"
+#include "IA.h"
 
-void iniciarPartida(void){
+void iniciarPartida(int modoJogo){
     Tabuleiro tabuleiro;
     JogadorTeclado jogador1 = {1};
     JogadorTeclado jogador2 = {2};
@@ -14,9 +15,15 @@ void iniciarPartida(void){
     inicializarTabuleiro(&tabuleiro);
     while(estado == 0){
         desenhar(&tabuleiro);
-        jogar(atual, &linha, &coluna);
-        if(jogada(&tabuleiro, linha, coluna, atual->tipo) == 0){
-            continue;
+        if(modoJogo == 2 && atual == &jogador2){
+            printf("Vez da IA!\n");
+            jogarIA(&tabuleiro, jogador2.tipo);
+        }
+        else{
+            jogar(atual, &linha, &coluna);
+            if(jogada(&tabuleiro, linha, coluna, atual->tipo) == 0){
+                continue;
+            }
         }
         estado = resultado(&tabuleiro);
         if(estado == 0){
@@ -31,7 +38,12 @@ void iniciarPartida(void){
     if(estado == 1){
         printf("Jogador X venceu!\n");
     } else if (estado == 2){
-        printf("Jogador O venceu!\n");
+        if(modoJogo == 2){
+            printf("A IA venceu!\n");
+        }
+        else{
+            printf("Jogador O venceu!\n");
+        }
     } else {
         printf("Empate!\n");
     }

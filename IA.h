@@ -3,10 +3,6 @@
 
 #include "tabuleiro.h"
 
-typedef struct{
-    int tipo;
-} JogadorIA;
-
 int R1(Tabuleiro *t, int alvo, int tipoIA);
 int R2(Tabuleiro *t, int tipoIA);
 int R3(Tabuleiro *t, int tipoIA);
