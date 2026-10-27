@@ -18,6 +18,8 @@ int main(){
         printf("Deseja jogar novamente?\n");
         printf("1- Sim\n");
         printf("2- Nao\n");
+        printf("Digite sua opcao: ");
+        scanf("%d", &opcao);
     }while(opcao == 1);
     printf("Obrigado por jogar.");
     return 0;
