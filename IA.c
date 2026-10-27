@@ -1,17 +1,7 @@
 #include <stdio.h>
 #include "IA.h"
 
-int R1(Tabuleiro *t, int alvo, int tipoIA){
-    int possibilidades[8][3] = {
-        {0, 1, 2},
-        {3, 4, 5},
-        {6, 7, 8},
-        {0, 3, 6},
-        {1, 4, 7},
-        {2, 5, 8},
-        {0, 4, 8},
-        {2, 4, 6},
-    };
+int R1(Tabuleiro *t, int alvo, int tipoIA, int possibilidades[8][3]){
     for(int i = 0; i<8; i++){
         int quantidade = 0;
         int posicaoLivre = -1;
@@ -33,17 +23,7 @@ int R1(Tabuleiro *t, int alvo, int tipoIA){
     }
     return 0;
 }
-int R2(Tabuleiro *t, int tipoIA){
-    int possibilidades[8][3] = {
-        {0, 1, 2},
-        {3, 4, 5},
-        {6, 7, 8},
-        {0, 3, 6},
-        {1, 4, 7},
-        {2, 5, 8},
-        {0, 4, 8},
-        {2, 4, 6}
-    };
+int R2(Tabuleiro *t, int tipoIA, int possibilidades[8][3]){
     for(int i = 0; i<3;i++){
         for(int j = 0; j<3;j++){
             if(t->matriz[i][j]!=0){
@@ -82,13 +62,7 @@ int R3(Tabuleiro *t, int tipoIA){
     }
     return 0;
 }
-int R4(Tabuleiro *t, int tipoIA){
-    int cantos[4][2] = {
-        {0, 8},
-        {2, 6},
-        {6, 2},
-        {8, 0},
-    };
+int R4(Tabuleiro *t, int tipoIA, int cantos[4][2]){
     for(int i = 0; i<4; i++){
         int linhaA = cantos[i][0]/3;
         int colunaA = cantos[i][0]%3;
@@ -102,13 +76,7 @@ int R4(Tabuleiro *t, int tipoIA){
     }
     return 0;
 }
-int R5(Tabuleiro *t, int tipoIA){
-    int cantos[4][2] = {
-        {0, 8},
-        {2, 6},
-        {6, 2},
-        {8, 0},
-    };
+int R5(Tabuleiro *t, int tipoIA, int cantos[4][2]){
     for(int i = 0; i<4; i++){
         int linha = cantos[i][0]/3;
         int coluna = cantos[i][0]%3;
@@ -129,23 +97,39 @@ int R6(Tabuleiro *t, int tipoIA){
     return 0;
 }
 int jogarIA(Tabuleiro *t, int tipoIA){
-    if(R1(t, tipoIA, tipoIA)){
+    int possibilidades[8][3] = {
+        {0, 1, 2},
+        {3, 4, 5},
+        {6, 7, 8},
+        {0, 3, 6},
+        {1, 4, 7},
+        {2, 5, 8},
+        {0, 4, 8},
+        {2, 4, 6},
+    };
+    int cantos[4][2] = {
+        {0, 8},
+        {2, 6},
+        {6, 2},
+        {8, 0},
+    };
+    if(R1(t, tipoIA, tipoIA, possibilidades)){
         return 1;
     }
-    if(R1(t, 4, tipoIA)){
+    if(R1(t, 4, tipoIA, possibilidades)){
         return 1;
     }
-    if(R2(t, tipoIA)){
+    if(R2(t, tipoIA, possibilidades)){
         printf("Executou R2.\n");
         return 1;
     }
     if(R3(t, tipoIA)){
         return 1;
     }
-    if(R4(t, tipoIA)){
+    if(R4(t, tipoIA, cantos)){
         return 1;
     }
-    if(R5(t, tipoIA)){
+    if(R5(t, tipoIA, cantos)){
         return 1;
     }
     if(R6(t, tipoIA)){
