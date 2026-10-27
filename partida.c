@@ -6,8 +6,8 @@
 
 void iniciarPartida(int modoJogo){
     Tabuleiro tabuleiro;
-    JogadorTeclado jogador1 = {1};
-    JogadorTeclado jogador2 = {2};
+    JogadorTeclado jogador1 = {4};
+    JogadorTeclado jogador2 = {1};
     JogadorTeclado *atual = &jogador1;
 
     int linha, coluna;
@@ -35,9 +35,9 @@ void iniciarPartida(int modoJogo){
         }
     }
     desenhar(&tabuleiro);
-    if(estado == 1){
+    if(estado == 4){
         printf("Jogador X venceu!\n");
-    } else if (estado == 2){
+    } else if (estado == 1){
         if(modoJogo == 2){
             printf("A IA venceu!\n");
         }

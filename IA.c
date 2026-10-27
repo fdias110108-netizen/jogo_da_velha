@@ -96,7 +96,7 @@ int R4(Tabuleiro *t, int tipoIA){
         int linhaIA = cantos[i][1]/3;
         int colunaIA = cantos[i][1]%3;
 
-        if(t->matriz[linhaA][colunaA] == 1 && t->matriz[linhaIA][colunaIA] == 0){
+        if(t->matriz[linhaA][colunaA] == 4 && t->matriz[linhaIA][colunaIA] == 0){
             return jogada(t, linhaIA + 1, colunaIA + 1, tipoIA);
         }
     }

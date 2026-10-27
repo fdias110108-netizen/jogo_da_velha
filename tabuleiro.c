@@ -13,9 +13,9 @@ void desenhar(Tabuleiro *t){
         for(int j = 0; j < 3; j++){
             if(t->matriz[i][j] == 0){
                 printf("   ");
-            } else if (t->matriz[i][j] == 1){
+            } else if (t->matriz[i][j] == 4){
                 printf(" X ");
-            } else {
+            } else if(t->matriz[i][j] == 1){
                 printf(" O ");
             }
             if(j < 2){
