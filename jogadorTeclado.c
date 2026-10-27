@@ -2,7 +2,7 @@
 #include "jogadorTeclado.h"
 
 void jogar(JogadorTeclado *j, int *linha, int *coluna){
-    if(j->tipo == 1){
+    if(j->tipo == 4){
         printf("Jogador X\n");
     } else {
         printf("Jogador O\n");
