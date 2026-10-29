@@ -120,7 +120,6 @@ int jogarIA(Tabuleiro *t, int tipoIA){
         return 1;
     }
     if(R2(t, tipoIA, possibilidades)){
-        printf("Executou R2.\n");
         return 1;
     }
     if(R3(t, tipoIA)){
