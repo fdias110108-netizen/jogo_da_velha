@@ -44,7 +44,7 @@ void iniciarPartida(int modoJogo){
         else{
             printf("Jogador O venceu!\n");
         }
-    } else {
+    } else if(estado == 3){
         printf("Empate!\n");
     }
 }
