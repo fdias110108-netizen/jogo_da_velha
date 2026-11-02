@@ -7,7 +7,7 @@
 
 typedef struct {
     int tipo;
-    SOCKET conexao;
+    SOCKET sock;
 } JogadorRemoto;
 
 int iniciarSocket(void);
