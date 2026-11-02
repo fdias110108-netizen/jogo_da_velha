@@ -5,46 +5,44 @@
 #include "IA.h"
 
 void iniciarPartida(int modoJogo){
-    Tabuleiro tabuleiro;
-    JogadorTeclado jogador1 = {4};
-    JogadorTeclado jogador2 = {1};
-    JogadorTeclado *atual = &jogador1;
+    Partida partida;
+    partida.jogadores[0].tipo = 4;
+    partida.jogadores[1].tipo = 1;
+    partida.atual = 0;
+    partida.modoJogo = modoJogo;
+    partida.estado = 0;
 
     int linha, coluna;
-    int estado = 0;
-    inicializarTabuleiro(&tabuleiro);
-    while(estado == 0){
-        desenhar(&tabuleiro);
-        if(modoJogo == 2 && atual == &jogador2){
+    inicializarTabuleiro(&partida.tabuleiro);
+    while(partida.estado == 0){
+        desenhar(&partida.tabuleiro);
+        JogadorTeclado *atual = &partida.jogadores[partida.atual];
+        if(partida.modoJogo == 2 && partida.atual == 1){
             printf("Vez da IA!\n");
-            jogarIA(&tabuleiro, jogador2.tipo);
+            jogarIA(&partida.tabuleiro, atual->tipo);
         }
         else{
             jogar(atual, &linha, &coluna);
-            if(jogada(&tabuleiro, linha, coluna, atual->tipo) == 0){
+            if(jogada(&partida.tabuleiro, linha, coluna, atual->tipo) == 0){
                 continue;
             }
         }
-        estado = resultado(&tabuleiro);
-        if(estado == 0){
-            if(atual == &jogador1){
-                atual = &jogador2;
-            } else {
-                atual = &jogador1;
-            }
+        partida.estado = resultado(&partida.tabuleiro);
+        if(partida.estado == 0){
+            partida.atual = 1 - partida.atual;
         }
     }
-    desenhar(&tabuleiro);
-    if(estado == 4){
+    desenhar(&partida.tabuleiro);
+    if(partida.estado == 4){
         printf("Jogador X venceu!\n");
-    } else if (estado == 1){
-        if(modoJogo == 2){
+    } else if (partida.estado == 1){
+        if(partida.modoJogo == 2){
             printf("A IA venceu!\n");
         }
         else{
             printf("Jogador O venceu!\n");
         }
-    } else if(estado == 3){
+    } else if(partida.estado == 3){
         printf("Empate!\n");
     }
 }
