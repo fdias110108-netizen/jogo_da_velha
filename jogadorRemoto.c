@@ -5,7 +5,7 @@
 
 int iniciarSocket(void){
     WSADATA dados;
-    if (MAKWSAStartup(EWORD(2, 2), &dados) != 0){
+    if (WSAStartup(MAKEWORD(2, 2), &dados) != 0){
         printf("Erro ao iniciar Winsock!\n");
         return 0;
     }
