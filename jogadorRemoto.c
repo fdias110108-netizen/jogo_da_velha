@@ -5,7 +5,7 @@
 
 int iniciarSocket(void){
     WSADATA dados;
-    if (WSAStartup(MAKEWORD(2, 2), &dados) != 0){
+    if (MAKWSAStartup(EWORD(2, 2), &dados) != 0){
         printf("Erro ao iniciar Winsock!\n");
         return 0;
     }
@@ -102,8 +102,8 @@ static int receberTudo(SOCKET sock, char *dados, int tamanho) {
 int enviaJogada(JogadorRemoto *j, int linha, int coluna) {
     unsigned char dados[2];
 
-    if (linha < 0 || linha > 2 ||
-        coluna < 0 || coluna > 2) {
+    if (linha < 1 || linha > 3 ||
+        coluna < 1 || coluna > 3) {
         return 0;
     }
     dados[0] = (unsigned char)linha;
@@ -119,7 +119,7 @@ int jogarRemoto(JogadorRemoto *j, Tabuleiro *t) {
     }
     int linha = dados[0];
     int coluna = dados[1];
-    if (linha > 2 || coluna > 2) {
+    if (linha < 1 || linha > 3|| coluna < 1 || coluna > 3) {
         printf("Coordenadas remotas invalidas!\n");
         return 0;
     }
