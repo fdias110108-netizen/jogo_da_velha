@@ -8,9 +8,11 @@ int main(){
         printf("______JOGO DA VELHA______\n");
         printf("1- Jogador vs Jogador\n");
         printf("2 - Jogador vs IA\n");
+        printf("3 - Jogador Remoto (Servidor)\n");
+        printf("4 - Jogador Remoto (Cliente)\n");
         printf("Digite uma opcao: ");
         scanf("%d", &modoJogo);
-        if(modoJogo == 1 || modoJogo == 2){
+        if(modoJogo == 1 || modoJogo == 2 || modoJogo == 3 || modoJogo == 4){
             iniciarPartida(modoJogo);
         } else {
             printf("Opcao invalida, tente novamente.");
